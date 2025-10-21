@@ -1,59 +1,90 @@
-# TATA Template
+# TARA Template (Threat Analysis and Risk Assessment)
 
 Purpose
 
-A concise description of the purpose of this TATA (Test And Traceability Artifact) template and when to use it.
+A concise description of the purpose of this TARA (Threat Analysis and Risk Assessment) template and when to use it.
 
 Metadata
 
 - Author: @prithvishenoy-knowit
 - Date: 2025-10-21
-- Version: 1.0
+- Version: 1.1
 - Status: Draft
 
 Project Context
 
 Briefly describe how this artifact relates to the secure-automotive-gateway project and which modules/components it affects.
 
-Objectives
+TARA Overview
 
-- Objective 1: (e.g., verify secure communication between gateway and ECUs)
-- Objective 2: (e.g., validate authentication and authorization flows)
+Explain the TARA approach, scope, methodology, and any standards followed (e.g., ISO 21434, SAE J3061, NIST).
 
-Scope
+Asset Identification
 
-Define what is in and out of scope for this TATA.
+- Asset ID
+- Asset name
+- Asset description
+- Owner
+- Confidentiality, Integrity, Availability (CIA) classification
 
-Prerequisites
+Threat Sources
 
-List environment, tools, credentials, hardware, or other preconditions needed to execute the tests or activities described here.
+List potential threat sources (e.g., malicious actors, supply chain, insiders, faults) and their capabilities.
 
-Test / Activity Matrix
+Threat Scenarios
 
-| ID | Title | Description | Steps | Expected Result | Owner | Priority |
-|----|-------|-------------|-------|-----------------|-------|----------|
-| TATA-001 | Example test | Short description of the test | 1. Do this\n2. Do that | Expected outcome | @owner | High |
+| ID | Scenario | Threat Source | Trigger/Entry Point | Affected Asset(s) | Description |
+|----|----------|---------------|---------------------|-------------------|-------------|
+| TARA-001 | Example: ECU takeover via insecure update | Remote attacker | OTA update service | Gateway, ECU | Short description of the scenario |
 
-Procedure
+Vulnerabilities
 
-Detailed step-by-step instructions for running the test or performing the activity. Include commands, config snippets, and filenames where appropriate.
+List identified vulnerabilities, how they relate to threat scenarios, and references to code, configs, or design documents.
 
-Validation & Acceptance Criteria
+Likelihood & Impact Assessment
 
-Clear pass/fail criteria and any metrics to be collected.
+- Likelihood: (e.g., Low/Medium/High) — rationale
+- Impact: (e.g., Low/Medium/High) — rationale
+- Scoring method: (e.g., qualitative, CVSS, custom scale)
 
-Risks & Mitigations
+Risk Evaluation
 
-List known risks, assumptions, and proposed mitigations.
+Summarize assessed risks combining likelihood and impact. Include risk rating and prioritization.
+
+Risk Treatment & Recommendations
+
+For each prioritized risk provide:
+- Recommended mitigations (technical and organizational)
+- Suggested security controls
+- Owner and target completion date
+
+Residual Risk
+
+Document residual risk after proposed mitigations and acceptance criteria for residual risk.
+
+Verification & Validation
+
+Describe tests, threat modeling, code reviews, penetration testing, and monitoring activities to validate mitigations.
+
+Monitoring & Review
+
+Describe how risks will be reviewed and monitored over time, including triggers for re-assessment and responsible parties.
 
 Artifacts & Evidence
 
-Describe logs, screenshots, reports, or other artifacts to collect and attach.
+List evidence to collect (logs, test results, design review notes, threat model files) and where to store them.
 
 Change Log
 
 - 1.0 (2025-10-21) - Draft created by @prithvishenoy-knowit
+- 1.1 (2025-10-21) - Converted to TARA template and clarified sections
+
+References
+
+- ISO 21434
+- SAE J3061
+- NIST Cybersecurity Framework
 
 Notes
 
-Any additional notes, references, or links to related issues/PRs/docs.
+Any additional notes, links to related issues/PRs, or next steps.
