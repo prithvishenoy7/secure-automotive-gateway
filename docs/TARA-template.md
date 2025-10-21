@@ -1,91 +1,55 @@
-# TARA Template (Threat Analysis and Risk Assessment)
+# TARA for Automotive Data Processor
 
-Purpose
+## Item Definition
+Cloud-based application that processes simulated vehicle CAN data and stores in AWS S3.
 
-A concise description of the purpose of this TARA (Threat Analysis and Risk Assessment) template and when to use it.
+## Assets
+1. Vehicle CAN data (confidential telemetry)
+2. AWS credentials (IAM keys/roles)
+3. S3 bucket (data storage)
+4. EC2 instance (processing)
+5. Processing logic (code)
 
-Metadata
+## Threat Scenarios
 
-- Author: @prithvishenoy-knowit
-- Date: 2025-10-21
-- Version: 1.1
-- Status: Draft
+### TS-001: Unauthorized Access to Vehicle Data
+- **Threat:** Attacker gains access to S3 bucket
+- **Impact:** Data breach (HIGH - privacy violation)
+- **Feasibility:** Medium (if misconfigured)
+- **Risk:** HIGH
+- **Treatment:** S3 encryption + IAM least privilege + bucket policies
 
-Project Context
+### TS-002: Credential Theft
+- **Threat:** Hardcoded AWS keys stolen from code
+- **Impact:** Full AWS account compromise (CRITICAL)
+- **Feasibility:** High (if keys in repo)
+- **Risk:** CRITICAL
+- **Treatment:** Use IAM roles, never hardcode credentials
 
-Briefly describe how this artifact relates to the secure-automotive-gateway project and which modules/components it affects.
+### TS-003: Data Tampering
+- **Threat:** Attacker modifies CAN data in transit or storage
+- **Impact:** Data integrity loss (MEDIUM)
+- **Feasibility:** Low (requires AWS access)
+- **Risk:** MEDIUM
+- **Treatment:** S3 versioning, CloudTrail logging
 
-TARA Overview
+### TS-004: Denial of Service
+- **Threat:** Attacker overwhelms processor or fills S3
+- **Impact:** Service unavailable (MEDIUM)
+- **Feasibility:** Medium
+- **Risk:** MEDIUM
+- **Treatment:** Rate limiting, S3 lifecycle policies, CloudWatch alarms
 
-Explain the TARA approach, scope, methodology, and any standards followed (e.g., ISO 21434, SAE J3061, NIST).
+### TS-005: Malicious CAN Data Injection
+- **Threat:** Attacker injects malicious data through input
+- **Impact:** Processing errors, potential code execution (HIGH)
+- **Feasibility:** Medium (if no input validation)
+- **Risk:** HIGH
+- **Treatment:** Input validation, data sanitization
 
-Asset Identification
+## Risk Assessment Summary
+- 2 HIGH risks
+- 2 MEDIUM risks
+- 1 CRITICAL risk
 
-- Asset ID
-- Asset name
-- Asset description
-- Owner
-- Confidentiality, Integrity, Availability (CIA) classification
-
-Threat Sources
-
-List potential threat sources (e.g., malicious actors, supply chain, insiders, faults) and their capabilities.
-
-Threat Scenarios
-
-| ID | Scenario | Threat Source | Trigger/Entry Point | Affected Asset(s) | Description |
-|----|----------|---------------|---------------------|-------------------|-------------|
-| TARA-001 | Example: ECU takeover via insecure update | Remote attacker | OTA update service | Gateway, ECU | Short description of the scenario |
-
-Vulnerabilities
-
-List identified vulnerabilities, how they relate to threat scenarios, and references to code, configs, or design documents.
-
-Likelihood & Impact Assessment
-
-- Likelihood: (e.g., Low/Medium/High) — rationale
-- Impact: (e.g., Low/Medium/High) — rationale
-- Scoring method: (e.g., qualitative, CVSS, custom scale)
-
-Risk Evaluation
-
-Summarize assessed risks combining likelihood and impact. Include risk rating and prioritization.
-
-Risk Treatment & Recommendations
-
-For each prioritized risk provide:
-- Recommended mitigations (technical and organizational)
-- Suggested security controls
-- Owner and target completion date
-
-Residual Risk
-
-Document residual risk after proposed mitigations and acceptance criteria for residual risk.
-
-Verification & Validation
-
-Describe tests, threat modeling, code reviews, penetration testing, and monitoring activities to validate mitigations.
-
-Monitoring & Review
-
-Describe how risks will be reviewed and monitored over time, including triggers for re-assessment and responsible parties.
-
-Artifacts & Evidence
-
-List evidence to collect (logs, test results, design review notes, threat model files) and where to store them.
-
-Change Log
-
-- 1.0 (2025-10-21) - Draft created by @prithvishenoy-knowit
-- 1.1 (2025-10-21) - Converted to TARA template and clarified sections
-- 1.2 (2025-10-21) - Renamed and moved to docs/TARA-template.md
-
-References
-
-- ISO 21434
-- SAE J3061
-- NIST Cybersecurity Framework
-
-Notes
-
-Any additional notes, links to related issues/PRs, or next steps.
+All will be addressed in Stories 1.3, 1.4, 1.5.
