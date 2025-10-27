@@ -1,0 +1,37 @@
+cat > .gitignore << 'EOF'
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+*.egg-info/
+dist/
+build/
+
+# AWS
+.aws/
+*.pem
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Data
+data/*.csv
+!data/sample_can_data.csv
+
+# Secrets (CRITICAL - never commit these!)
+secrets.json
+credentials.json
+*.key
+*.secret
+
+# OS
+.DS_Store
+Thumbs.db
+EOF
