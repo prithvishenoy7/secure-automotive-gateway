@@ -3,7 +3,7 @@ boto3==1.34.20
 botocore==1.34.20
 
 # Data processing
-pandas==2.1.4
+pandas==2.2.3
 
 # Logging
 python-json-logger==2.0.7
