@@ -1,0 +1,9 @@
+{
+  "endpoint": "your-endpoint.iot.region.amazonaws.com",
+  "thing_name": "can-gateway",
+  "client_id": "can-gateway",
+  "cert_path": "./certs/certificate.pem.crt",
+  "key_path": "./certs/private.pem.key",
+  "ca_path": "./certs/AmazonRootCA1.pem",
+  "publish_interval_seconds": 300
+}

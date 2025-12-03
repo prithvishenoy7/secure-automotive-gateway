@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  can-gateway-mqtt:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: can-gateway-mqtt
+    ports:
+      - "5000:5000"
+    volumes:
+      # Mount certificates from host (update paths as needed)
+      - ./certs:/app/certs:ro
+      # Mount config for easy updates without rebuild
+      - ./config.json:/app/config.json:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    networks:
+      - can-gateway-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:5000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  can-gateway-network:
+    driver: bridge

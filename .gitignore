@@ -27,6 +27,8 @@ data/*.csv
 # Secrets (CRITICAL - never commit these!)
 secrets.json
 credentials.json
+config.json
+*.crt
 *.key
 *.secret
 
